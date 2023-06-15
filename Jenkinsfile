@@ -32,7 +32,9 @@ pipeline{
             }
         stage('Deploying into k8s'){
             steps{
-                kubernetesDeploy(configs: "deployment.yaml")
+                withKubeConfig([credentialsId: 'kubeconfig']) {
+                    bat 'kubectl apply -f deployment.yaml'
+                }
             }
         }
     }
