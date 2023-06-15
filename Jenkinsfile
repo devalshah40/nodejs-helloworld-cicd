@@ -1,6 +1,6 @@
 pipeline{
   environment {
-    registry = "sampath5/node-helloworld"
+    registry = "phpstacktest/nodejs-helloworld"
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
@@ -25,7 +25,7 @@ pipeline{
                   script 
                     {
                         docker.withRegistry( '', registryCredential ) {
-                            dockerImage.push()
+                            dockerImage.push('latest')
                         }
                    } 
                }
